@@ -6,6 +6,9 @@
 package streamss;
 
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -17,6 +20,7 @@ public class Jugador {
     private LocalDate nacimiento;
     private int canastas;
     private Equipo equipo;
+    Map<String, List<Equipo>> myStream = new HashMap<>();
 
     public Jugador(String nombre, LocalDate nacimiento, int canastas, Equipo equipo) {
         this.nombre = nombre;
@@ -61,6 +65,5 @@ public class Jugador {
     public String toString() {
         return "Jugador{" + "nombre=" + nombre + ", nacimiento=" + nacimiento + ", canastas=" + canastas + ", equipo=" + equipo + '}';
     }
-
 
 }

@@ -35,102 +35,112 @@ public class MainStreams {
         listaJugadores.add(j5);
         listaJugadores.add(j6);
         
-    
-        
-       // Stream<Jugador> myStream = listaJugadores.stream();
+        List<Equipo> listaEquipos = new ArrayList<>();
+        listaEquipos.add(eq1);
+        listaEquipos.add(eq2);
+        listaEquipos.add(eq3);
 
         System.out.println("Devolver con una lista  todos los jugadores que hayan obtenido más de 500 canastas.");
-        listaJugadores.stream()
-                .filter(j -> j.getCanastas() > 500)
-                .forEach(System.out::println);
+        listaJugadores.stream().filter(j -> j.getCanastas() > 500).forEach(System.out::println);
 
  
         System.out.println("Devolver con una lista  todos los jugadores que hayan obtenido entre 200 y 500 canastas.");
-        listaJugadores.stream()
-                .filter(j -> j.getCanastas() > 200 && j.getCanastas() < 500)
-                .forEach(System.out::println);
+        listaJugadores.stream().filter(j -> j.getCanastas() > 200 && j.getCanastas() < 500).forEach(System.out::println);
         
         System.out.println("Devolver en una lista exclusivamente los nombres de los jugadores que satisfacen  los requisitos del 1.3");
-        listaJugadores.stream()
-                .filter(j -> j.getCanastas() > 200 && j.getCanastas() < 500)
-                .map(Jugador::getNombre)
-                .forEach(System.out::println);
+        listaJugadores.stream().filter(j -> j.getCanastas() > 200 && j.getCanastas() < 500).map(Jugador::getNombre).forEach(System.out::println);
 
         System.out.println("Devolver con una lista todos los jugadores ordenados por la fecha de nacimiento.");
-        listaJugadores.stream()
-                .sorted(Comparator.comparing(Jugador::getNacimiento))
-                .forEach(System.out::println);
+        listaJugadores.stream().sorted(Comparator.comparing(Jugador::getNacimiento)).forEach(System.out::println);
         
         System.out.println("Devolver con una lista todos los jugadores ordenados por número de canastas.");
-        listaJugadores.stream()
-                .sorted(Comparator.comparing(Jugador::getCanastas))
-                .forEach(System.out::println);
+        listaJugadores.stream().sorted(Comparator.comparing(Jugador::getCanastas)).forEach(System.out::println);
         
 
         System.out.println("Devolver con una lista con los cinco jugadores que hayan realizado más canastas.");
-        listaJugadores.stream()
-                .sorted(Comparator.comparing(Jugador::getCanastas))
-                .limit(5)
-                .forEach(System.out::println);
+        listaJugadores.stream().sorted(Comparator.comparing(Jugador::getCanastas)).limit(5).forEach(System.out::println);
         
         
+        
+        
+        //Nacimiento?
         System.out.println("Devolver con una lista todos los jugadores que satisfacen el punto 1.3 ordenados por la fecha de nacimiento de manera descendente.");
-        
+                listaJugadores.stream().filter(j -> j.getCanastas() > 200 && j.getCanastas() < 500).sorted(Nacimiento).forEach(System.out::println);
 
+        
+        
+        //???? PUBLIC VOID DE ABAJO ACABARLO!
         System.out.println("Devolver con una lista todos los jugadores que satisfacen el filtro del punto 1.3 ordenadosen primer lugar por número de canastas y en segundo lugar (si tienen el mismo número de canastas) por la fecha de nacimiento.");
+  
+        
+        
+         System.out.println(listaJugadores.stream().filter(j -> j.getCanastas() > 200 && j.getCanastas() < 500).sorted().sorted(Comparator.comparing(Jugador::getCanastas)));
+        
+        
         
         
         System.out.println("Devolver el jugador que ha realizado el mínimo número de canastas.");
         
-        System.out.println(listaJugadores.stream()
-                .reduce((x, y) -> x.getCanastas() < y.getCanastas() ? x : y));
+        System.out.println(listaJugadores.stream().reduce((x, y) -> x.getCanastas() < y.getCanastas() ? x : y));
         
- 
-        
+   
         System.out.println("Devolver el jugador que ha realizado el máximo número de canastas.");
-        System.out.println(listaJugadores.stream()
-                .reduce((x, y) -> x.getCanastas() > y.getCanastas() ? x : y));
+        System.out.println(listaJugadores.stream().reduce((x, y) -> x.getCanastas() > y.getCanastas() ? x : y));
 
         
         System.out.println("Devolver la media de canastas de todos los jugadores.");
-        System.out.println(listaJugadores.stream()
-                .collect(Collectors.averagingInt(j -> j.getCanastas())));
+        System.out.println(listaJugadores.stream().collect(Collectors.averagingInt(j -> j.getCanastas())));
 
         System.out.println("Devolver con una lista todos los jugadores que pertenezcan a equipos cuya localidad sea Igualada.");
-        listaJugadores.stream()
-                .filter(j -> j.getEquipo().getCiudad().toLowerCase().equals("igualada"))
-                .forEach(System.out::println);
+        listaJugadores.stream().filter(j -> j.getEquipo().getCiudad().toLowerCase().equals("igualada")).forEach(System.out::println);
      
         System.out.println("Devolver con un boolean si hay algún jugador que ha conseguido más de 4.000 canastas");
-        System.out.println(listaJugadores.stream()
-                .anyMatch(j -> j.getCanastas() > 4000));
+        System.out.println(listaJugadores.stream().anyMatch(j -> j.getCanastas() > 4000));
         
         System.out.println("Devolver con un boolean si todos los jugadores han conseguido más de 50 canastas.");
-        System.out.println(listaJugadores.stream()
-                .allMatch(j -> j.getCanastas() > 50));
+        System.out.println(listaJugadores.stream().allMatch(j -> j.getCanastas() > 50));
         
   
         System.out.println("Devolver con un boolean si todos los jugadores del primer equipo añadido han conseguido más de 50 canastas.");
-        System.out.println(listaJugadores.stream()
-                .filter(j -> j.getEquipo() == eq1)
-                .allMatch(j -> j.getCanastas() > 50));
+        System.out.println(listaJugadores.stream().filter(j -> j.getEquipo() == eq1).allMatch(j -> j.getCanastas() > 50));
 
         
-        // Map creado arriba!
+        
+        
+        
+        
+        // Map creado en la clase Jugador
         System.out.println("Devolver un Map<String, List<Equipo>> agrupando los equipos que pertenecen a una misma localidad.");
-        System.out.println(listaJugadores.stream().map((Function<? super Jugador, ? extends R>) myMap));
-        System.out.println(Stream<String, List<Equipo>> myNewStream = 
-             listaJugadores.stream().map(j);
+        System.out.println(listaJugadores.stream().filter(j -> j.myStream).allMatch(j -> j.));
+        
+        
+        
+        
 
         
         System.out.println("Devolver la suma del número de canastas de todos los jugadores.");
         System.out.println(listaJugadores.stream()
                 .map(Jugador::getCanastas)
                 .reduce(0, (a, b) -> a + b));
-
         
-        System.out.println("Todos los jugadores de un equipo en concreto.");
+        
+        
+        
+        
+        
 
+        // PREDICATE?
+        System.out.println("Todos los jugadores de un equipo en concreto.");
+        
+       // Comparator.comparing(Jugador::getCanastas)
+        listaJugadores.stream().sorted(Comparator.comparing(Jugador::getEquipo).forEach(System.out::println));
+
+    }
+    
+    public void java_8(List<Jugador> listaJugadores){
+          Comparator<Jugador> byNumeroCanastas =(e1, e2) -> Integer.compare(e1.getCanastas(), e2.getCanastas());
+          listaJugadores.stream().sorted(byNumeroCanastas).forEach(System.out::println);
+        
     }
 
 }
